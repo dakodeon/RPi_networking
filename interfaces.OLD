@@ -1,0 +1,36 @@
+# local network loopback
+
+auto lo
+iface lo inet loopback
+
+# LAN settings
+
+# auto eth0
+allow-hotplug eth0
+iface eth0 inet dhcp
+
+# WAN settings
+
+# this is for static ip
+
+allow-hotplug wlan0
+
+#auto wlan0
+
+iface wlan0 inet static
+	address 192.168.42.1
+	netmask 255.255.255.0
+	gateway 192.168.1.1
+
+# uncomment these lines (and comment the lines above) for dynamic ip
+
+#auto wlan0
+#iface wlan0 inet manual
+#wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+#iface default inet dhcp
+
+# ip tables for ip routing
+
+pre-up iptables-restore < /etc/iptables.ipv4.nat
+
+

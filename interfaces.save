@@ -1,0 +1,20 @@
+# local network loopback
+
+auto lo
+iface lo inet loopback
+
+# LAN settings
+
+#auto eth0
+allow-hotplug eth0
+££££££££iface eth0 inet static
+	address 192.168.1.23
+	netmask 255.255.255.0
+	gateway 192.168.1.1
+#iface eth0 inet dhcp
+
+# WAN settings are managed through piratebox - original settings can be found in /etc/network/interfaces.OLD
+
+# uncomment the next line to enable IP routing - doesn't work, check it out
+
+# pre-up iptables-restore < /etc/iptables.ipv4.nat
